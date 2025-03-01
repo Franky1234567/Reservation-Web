@@ -21,7 +21,7 @@ Sebelum memulai, pastikan Anda sudah menginstal hal-hal berikut:
 ### Langkah-langkah Menjalankan Secara Lokal
 
 1. **Clone Repositori**:
-linnk ku
+https://github.com/Franky1234567/Reservation-Web.git
 
 2. **Instal Dependensi**:
 Anda bisa menggunakan `npm` atau `yarn` untuk menginstal dependensi:
