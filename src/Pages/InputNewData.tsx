@@ -1,15 +1,13 @@
-
 import { ChangeEvent } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Reservation as ReservationType } from "@/Types/Reservation"; 
 
-
 const formatDate = (date: Date) => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+    return `${year}-${month}-${day}`; 
 }
 
 interface InputNewDataProps {
@@ -42,10 +40,9 @@ const InputNewData: React.FC<InputNewDataProps> = ({ reservation, setReservation
         }
     };
 
-    
     const isValidDate = (date: string) => {
         const parsedDate = new Date(date);
-        return !isNaN(parsedDate.getTime());
+        return parsedDate instanceof Date && !isNaN(parsedDate.getTime());
     };
 
     return (
@@ -58,8 +55,9 @@ const InputNewData: React.FC<InputNewDataProps> = ({ reservation, setReservation
                     name="roomType"
                     value={reservation.roomType}
                     onChange={handleInputChange}
-                    className="p-2 border-0 bg-blue-100 rounded w-full mb-2 "
+                    className="p-2 border-0 bg-blue-100 rounded w-full mb-2"
                 >
+                    <option value="">Select Room Type</option>
                     <option value="Standard">Standard</option>
                     <option value="Family">Family</option>
                 </select>
@@ -77,40 +75,29 @@ const InputNewData: React.FC<InputNewDataProps> = ({ reservation, setReservation
 
                 
                 <label htmlFor="checkIn" className="block mb-2">Check-in Date</label>
-                <DatePicker
-                    selected={isValidDate(reservation.checkIn) ? new Date(reservation.checkIn) : null}  
-                    onChange={(date) => handleDateChange(date, "checkIn")}
-                    className="p-2 border-0 bg-blue-100 rounded w-full mb-2"
-                    placeholderText="Select check-in date"
-                />
+                <div tabIndex={0}>
+                    <DatePicker
+                        selected={isValidDate(reservation.checkIn) ? new Date(reservation.checkIn) : null}  
+                        onChange={(date) => handleDateChange(date, "checkIn")}
+                        className="p-2 border-0 bg-blue-100 rounded w-full mb-2"
+                        placeholderText="Select check-in date"
+                    />
+                </div>
 
                 
                 <label htmlFor="checkOut" className="block mb-2">Check-out Date</label>
-                <DatePicker
-                    selected={isValidDate(reservation.checkOut) ? new Date(reservation.checkOut) : null}  
-                    onChange={(date) => handleDateChange(date, "checkOut")}
-                    className="p-2 border-0 bg-blue-100 rounded w-full"
-                    placeholderText="Select check-out date"
-                />
+                <div tabIndex={0}>
+                    <DatePicker
+                        selected={isValidDate(reservation.checkOut) ? new Date(reservation.checkOut) : null}  
+                        onChange={(date) => handleDateChange(date, "checkOut")}
+                        className="p-2 border-0 bg-blue-100 rounded w-full"
+                        placeholderText="Select check-out date"
+                    />
+                </div>
             </div>
 
             <div className="mt-5 border p-5 border-gray-400">
                 <h1 className="font-bold mb-3 text-xl flex items-center gap-2"> 
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        width="24" 
-                        height="24" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        stroke="black" 
-                        strokeWidth="2" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        style={{color: 'rgb(255, 255, 255)', width: '20px', height: '20px',}}
-                    >
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
                     Guest Information
                 </h1>
 
@@ -130,5 +117,6 @@ const InputNewData: React.FC<InputNewDataProps> = ({ reservation, setReservation
 }
 
 export default InputNewData;
+
 
 

@@ -113,20 +113,11 @@ Tanggal ditangani menggunakan komponen `react-datepicker`. Tanggal disimpan dala
 
 ## Masalah yang Diketahui
 
-- **Jarak Tanggal tidak bisa terlalu jauh, misalkan CI tanggal 01, max CO yang bisa disimpan datanya adalah tanggal 10, Kalo CI tanggal 10 max CO adalah tanggal 12, dan Seterusnya, Hingga Aplikasi di deploy fitur tersebut belum di sempurnakan.
-- **Hydration Error**: Ada masalah dengan **hydration error** jika ada spasi ekstra atau node teks yang tidak sengaja ditambahkan antara tag `<html>` dan `<body>`, yang menyebabkan perbedaan antara HTML yang dirender di server dan yang dirender di klien, Namun Hingga Aplikasi di Deploy Masalah tersebut berhasil di tangani.
+- **
 
 
----
 
-## Peningkatan yang Dapat Dilakukan
 
-Jika diberikan lebih banyak waktu, peningkatan berikut bisa dilakukan:
-1. **Penanganan Error**: Meningkatkan penanganan error untuk pemilihan tanggal dan pengisian form, misalnya dengan menampilkan pesan error jika tanggal tidak valid atau jika kolom wajib kosong.
-2. **Desain Responsif**: Meningkatkan responsivitas aplikasi untuk memastikan aplikasi dapat berfungsi dengan baik di semua perangkat seluler.
-3. **Autentikasi Pengguna**: Mengimplementasikan autentikasi pengguna untuk membuat dan mengelola reservasi, termasuk fitur login dan registrasi.
-4. **Integrasi Backend**: Mengintegrasikan API backend untuk menyimpan reservasi secara persisten dalam database daripada hanya menggunakan Redux untuk state sementara.
-5. **Aksesibilitas**: Meningkatkan aksesibilitas dengan memastikan bahwa semua komponen dapat diakses menggunakan navigasi keyboard dan pembaca layar.
 
 ---
 

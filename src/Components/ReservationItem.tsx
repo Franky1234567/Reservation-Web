@@ -57,10 +57,30 @@ export default function ReservationItem({
   };
 
   // Fungsi untuk mengubah status reservasi saat tombol diklik
+  // const handleStatusChange = () => {
+  //   const currentStatus = reservation.status;
+  //   let newStatus: ReservationStatus;
+
+  //   switch (currentStatus) {
+  //     case ReservationStatus.CONFIRMED:
+  //       newStatus = ReservationStatus.CHECKED_IN;
+  //       break;
+  //     case ReservationStatus.CHECKED_IN:
+  //       newStatus = ReservationStatus.CHECKED_OUT;
+  //       break;
+  //     case ReservationStatus.CHECKED_OUT:
+  //       newStatus = ReservationStatus.CONFIRMED;
+  //       break;
+  //     default:
+  //       newStatus = ReservationStatus.CONFIRMED;
+  //   }
+
+  //   updateStatus(reservation.id, newStatus);
+  // };
   const handleStatusChange = () => {
     const currentStatus = reservation.status;
     let newStatus: ReservationStatus;
-
+  
     switch (currentStatus) {
       case ReservationStatus.CONFIRMED:
         newStatus = ReservationStatus.CHECKED_IN;
@@ -69,14 +89,15 @@ export default function ReservationItem({
         newStatus = ReservationStatus.CHECKED_OUT;
         break;
       case ReservationStatus.CHECKED_OUT:
-        newStatus = ReservationStatus.CONFIRMED;
-        break;
+        // Tidak bisa kembali ke CONFIRMED setelah CHECKED OUT
+        return; // Tidak ada perubahan status
       default:
         newStatus = ReservationStatus.CONFIRMED;
     }
-
+  
     updateStatus(reservation.id, newStatus);
   };
+  
 
   
   const handleOpenDetail = () => {
